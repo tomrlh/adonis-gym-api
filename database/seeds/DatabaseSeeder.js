@@ -12,7 +12,7 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const TypeUserSeeder = use('./TypeUserSeeder')
-const UserSeeder = use('./UserSeeder')
+const UserTableSeeder = use('./UserTableSeeder')
 const ClientSeeder = use('./ClientSeeder')
 const ExerciseSeeder = use('./ExerciseSeeder')
 const TrainingSeeder = use('./TrainingSeeder')
@@ -20,13 +20,15 @@ const ExerciseTrainingSeeder = use('./ExerciseTrainingSeeder')
 
 class DatabaseSeeder {
   async run () {
-    await TypeUserSeeder.run()
-    await UserSeeder.run()
-    await ClientSeeder.run()
-    await ExerciseSeeder.run()
-    await TrainingSeeder.run()
-    await ExerciseTrainingSeeder.run()
+    await new TypeUserSeeder().run()
+    await new UserTableSeeder().run()
+    await new ClientSeeder().run()
+    await new ExerciseSeeder().run()
+    await new TrainingSeeder().run()
+    await new ExerciseTrainingSeeder().run()
   }
 }
+
+//adonis seed --files="TypeUserSeeder.js, UserTableSeeder.js, ClientSeeder.js, ExerciseSeeder.js, TrainingSeeder.js, ExerciseTrainingSeeder.js"
 
 module.exports = DatabaseSeeder

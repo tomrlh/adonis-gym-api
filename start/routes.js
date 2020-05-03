@@ -20,11 +20,8 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
-// Route.get('/users', 'UserController.index')
-// Route.get('/users/:id', 'UserController.show')
-// Route.post('/users', 'UserController.store')
-// Route.put('/users/:id', 'UserController.update')
-// Route.delete('/users/:id', 'UserController.destroy')
+Route.post('/sessions', 'SessionController.create')
+Route.put('/sessions', 'SessionController.refreshToken')
 
 Route.resource('users', 'UserController').apiOnly().validator(new Map([
   [['users.store'], ['User']], [['users.update'], ['User']]

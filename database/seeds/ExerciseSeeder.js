@@ -15,7 +15,7 @@ const Factory = use('Factory')
 const Database = use('Database')
 
 class ExerciseSeeder {
-  static async run () {
+  async run () {
     await Database.table('exercises').insert({
       name: 'Biceps', observation: '', series: 4, waiting_time: 30, url_image: 'https://www.wikihow.com/images/thumb/0/00/Get-Bigger-Biceps-Step-1-Version-4.jpg/aid828149-v4-728px-Get-Bigger-Biceps-Step-1-Version-4.jpg.webp'
     }),

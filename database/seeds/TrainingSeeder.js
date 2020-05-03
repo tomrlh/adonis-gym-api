@@ -15,7 +15,7 @@ const Factory = use('Factory')
 const Database = use('Database')
 
 class TrainingSeeder {
-  static async run () {
+  async run () {
     await Database.table('trainings').insert({
       name: 'Monday training', observation: '', client_id: 1
     })
