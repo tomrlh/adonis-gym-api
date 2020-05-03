@@ -10,7 +10,6 @@ class ContentType {
    * @param {Function} next
    */
   async handle ({ request }, next) {
-    console.log('CONTENTTYPE MIDDLEWARE')
     let headers = request.headers()
     headers.accept = 'application/json'
 

@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| TypeUserSeeder
+| TrainingSeeder
 |--------------------------------------------------------------------------
 |
 | Make use of the Factory instance to seed database with dummy data or
@@ -14,12 +14,12 @@
 const Factory = use('Factory')
 const Database = use('Database')
 
-class TypeUserSeeder {
+class TrainingSeeder {
   static async run () {
-    await Database.table('type_users').insert({name: 'Administrador'}),
-    await Database.table('type_users').insert({name: 'Colaborador'}),
-    await Database.table('type_users').insert({name: 'Cliente'})
+    await Database.table('trainings').insert({
+      name: 'Monday training', observation: '', client_id: 1
+    })
   }
 }
 
-module.exports = TypeUserSeeder
+module.exports = TrainingSeeder
