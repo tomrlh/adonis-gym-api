@@ -1,24 +1,34 @@
 'use strict'
 
+const User = use('App/Models/User')
+
 class UserController {
     async index() {
-        return {result: 'All users'}
+        return await User.all()
     }
 
-    async show(id) {
-        return {result: 'Got user ' + id.toString()}
+    async show({params}) {
+        const user = await User.findOrFail(params.id)
+        return user
     }
 
-    async store(user) {
-        return {result: 'user saved ' + user.toString()}
+    async store({request}) {
+        const data = request.only(['name', 'userName', 'password', 'email', 'type_user_id'])
+        const user = await User.create(data)
+        return user
     }
 
-    async update(id) {
-        return {result: 'Updating user ' + id}
+    async update({params, request}) {
+        const user = await User.findOrFail(params.id)
+        const data = request.only(['name', 'userName', 'password', 'email', 'type_user_id'])
+        user.merge(data)
+        await user.save()
+        return user
     }
 
-    async destroy() {
-        return {result: 'Got 1 specific user'}
+    async destroy({params}) {
+        const user = await User.findOrFail(params.id)
+        return await user.delete()
     }
 }
 
