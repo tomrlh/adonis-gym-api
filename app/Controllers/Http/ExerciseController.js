@@ -2,6 +2,7 @@
 
 const Exercise = use('App/Models/Exercise')
 const Helpers = use('Helpers')
+const Logger = use('Logger')
 
 class ExerciseController {
     async index() {
@@ -28,6 +29,9 @@ class ExerciseController {
             data.url_image = photo.clientName
         }
         const exercise = await Exercise.create(data)
+        Logger.info('New exercise added', {
+            data: exercise.toJSON()
+        })
         return exercise
     }
 
