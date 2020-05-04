@@ -28,7 +28,7 @@ Route.resource('users', 'UserController').apiOnly().validator(new Map([
 ])).middleware(['auth:jwt', 'is:manager'])
 
 Route.resource('clients', 'ClientController').apiOnly().middleware(['auth:jwt', 'is:manager'])
-Route.resource('exercises', 'ExerciseController').apiOnly().middleware(['auth:jwt', 'can:manage_exercises'])
+Route.resource('exercises', 'ExerciseController').apiOnly().middleware(['auth:jwt', 'can:manage_exercises', 'audit'])
 Route.resource('trainings', 'TrainingController').apiOnly().middleware(['auth:jwt', 'can:manage_exercises'])
 
 Route.resource('permissions', 'PermissionController').apiOnly().middleware(['auth:jwt', 'is:manager'])

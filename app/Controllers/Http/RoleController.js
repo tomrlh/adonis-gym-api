@@ -24,9 +24,9 @@ class RoleController {
     }
 
     async update({params, request}) {
-        const permission = await Role.findOrFail(params.id)
+        const role = await Role.findOrFail(params.id)
         const {permissions, ...data} = request.only(['name', 'slug', 'description', 'permissions'])
-        Role.merge(data)
+        role.merge(data)
         await role.save()
         if(permissions)
             await role.permissions().sync(permissions)
